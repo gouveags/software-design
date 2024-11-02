@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "name": "software-design",
+  "version": "0.0.1",
+  "description": "Found this really interesting book @ https://third-bit.com/sdxjs/systems-programming/ - This is a project for me to follow along with some exercises.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Gouvea",
+  "license": "ISC"
+}
