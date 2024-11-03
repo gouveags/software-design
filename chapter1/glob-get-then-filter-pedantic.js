@@ -7,6 +7,7 @@
  * 	 if(err) {
  *		console.log(err);
  *	} else {
+ *		files = files.filter((f) => { return !f.endsWith('.bck'); });
  *		for (const filename of files){
  *			console.log(filename);
  *		}
@@ -28,12 +29,14 @@
 import {glob} from 'glob'
 
 try{
-    const res = await glob("**/*.*");
-    for (const fileName of res){
-        console.log(fileName);
-    }
+	const res = await glob("**/*.*");	
+	const filter = res.filter((f) => { return !f.endsWith('.bck'); });
+	for (const fileName of filter){
+        	console.log(fileName);
+	 }
+	
 }  catch (err){
-    console.log(err);
+	console.log(err);
 }
 
 

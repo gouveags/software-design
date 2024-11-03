@@ -3,12 +3,15 @@
  *
  * import glob from 'glob'
  * 
- * glob('*.*', (err, files) => {  
+ * const [srcDir, dstDir] = process.argv.slice(2);
+ *
+ * glob(`${srcDisr}\/**\/*.*`, {ignore: '*.bck'}, (err, files) => {  
  * 	 if(err) {
  *		console.log(err);
  *	} else {
- *		for (const filename of files){
- *			console.log(filename);
+ *		for (const srcName of files){
+ *			const dstName = srcName.replace(srcDir, dstDir);
+ *			console.log(srcName, dstName);
  *		}
  *	}
  * });
@@ -28,12 +31,15 @@
 import {glob} from 'glob'
 
 try{
-    const res = await glob("**/*.*");
-    for (const fileName of res){
-        console.log(fileName);
-    }
+	const [srcDir, dstDir] = process.argv.slice(2);
+	const res = await glob(`${srcDir}/**/*.*`, {ignore: '*.bck'});	
+	for (const srcName of res){
+		const dstName = srcName.replace(srcDir, dstDir);
+        	console.log(srcName, dstName);
+	 }
+	
 }  catch (err){
-    console.log(err);
+	console.log(err);
 }
 
 

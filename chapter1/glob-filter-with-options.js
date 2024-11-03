@@ -3,7 +3,7 @@
  *
  * import glob from 'glob'
  * 
- * glob('*.*', (err, files) => {  
+ * glob('*.*', {ignore: '*.bck'}, (err, files) => {  
  * 	 if(err) {
  *		console.log(err);
  *	} else {
@@ -28,12 +28,13 @@
 import {glob} from 'glob'
 
 try{
-    const res = await glob("**/*.*");
-    for (const fileName of res){
-        console.log(fileName);
-    }
+	const res = await glob("**/*.*", {ignore: '*.bck'});	
+	for (const fileName of res){
+        	console.log(fileName);
+	 }
+	
 }  catch (err){
-    console.log(err);
+	console.log(err);
 }
 
 
