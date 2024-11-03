@@ -53,13 +53,8 @@ try{
 	for (const srcName of files){
  			const dstName = srcName.replace(srcRoot, dstRoot);
  			const dstDir = path.dirname(dstName);
- 			fs.ensureDir(dstDir, async (err) => {
- 				if(err) { 
- 					console.error(err);
- 				} else {
-					await fs.copy(srcName, dstName);
-				}
- 			});
+			await fs.ensureDir(dstDir);  
+			await fs.copy(srcName, dstName); 
 	}	
 }  catch (err){
 	console.log(err);
